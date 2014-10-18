@@ -1,6 +1,5 @@
 bin/
 project.properties
 gen/
-.project
 .settings/
 .classpath

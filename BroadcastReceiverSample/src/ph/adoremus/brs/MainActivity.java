@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ph.adoremus.brs.receivers.AlarmReceiver;
+import ph.adoremus.brs.services.TextViewService;
 
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +26,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private ListView lvMenuItems;
 	private Button btnAlarm;
-	
+	private Button btnService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,17 @@ public class MainActivity extends Activity {
 			}
 		});
         
+        
+        btnService = (Button) findViewById(R.id.btnService);
+        btnService.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent tvService = new Intent(v.getContext(), TextViewService.class);
+				tvService.putExtra("prefix", "Dolor sit amet");
+				v.getContext().startService(tvService);
+			}
+		});
         
     }
 
